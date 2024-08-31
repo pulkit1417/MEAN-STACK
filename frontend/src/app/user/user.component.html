@@ -1,0 +1,33 @@
+<div class="table-container">
+    <div class="header-container">
+        <h1 class="table-heading">User Management</h1>
+        <div class="button-container">
+            <button class="btn add-btn" routerLink="/user/add">Add New User</button>
+        </div>
+    </div>
+    <table class="responsive-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(user of users; track $index) {
+                <tr>
+                    <td data-label="Name">{{ user.name }}</td>
+                    <td data-label="Email">{{ user.email }}</td>
+                    <td data-label="Age">{{ user.age }}</td>
+                    <td data-label="Address">{{ user.address }}</td>
+                    <td data-label="Actions" class="actions-cell">
+                        <button class="btn edit-btn" [routerLink]="'/user/'+user._id" >Edit</button>
+                        <button class="btn delete-btn" (click)="deleteUser(user._id!)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
